@@ -1,163 +1,92 @@
 <div align="center">
 
 <p align="center">
-  <img src="icon.png" alt="Silicon - WebView apk template" width="200" height="" />
+  <img src="./design/paint.svg" alt="Sketchpad" width="170" height="" />
 </p>
 
-<h1 align="center">WebView APK Template</h1>
+<h1 align="center">Sketchpad</h1>
 
 <p align="center">
-  <em>Turn any HTML/CSS/JS (supports vite react) website into an installable Android app — no Kotlin, no Android SDK, no browser chrome.</em>
+  <em>A minimal drawing app for android - get a blank canvas and draw on it with your finger. No accounts, no clutter, just the canvas.</em>
 </p>
+<p>
 
-<p align="center">
-  Drop your site into <code>app/</code> &middot; push to GitHub &middot; download an APK from Actions.
-</p>
-
-<div>
-
-[![Build APK](https://github.com/fazle-rabbi-dev/Html-Css-Js-Web-View-Apk-Template/actions/workflows/build-apk.yml/badge.svg)](https://github.com/fazle-rabbi-dev/Html-Css-Js-Web-View-Apk-Template/actions/workflows/build-apk.yml)
+[![Build APK](https://github.com/the-softcraft/Sketchpad/actions/workflows/build-apk.yml/badge.svg)](https://github.com/the-softcraft/Sketchpad/actions/workflows/build-apk.yml)
 ![Android 6+](<https://img.shields.io/badge/Android-6%2B%20(API%2023)-3DDC84?logo=android&logoColor=white>)
 
-</div>
+</p>
 
 ![Min SDK](https://img.shields.io/badge/minSdk-23-2563EB) ![Target SDK](https://img.shields.io/badge/targetSdk-34-2563EB) ![Dependencies](https://img.shields.io/badge/dependencies-zero-10B981) ![License](https://img.shields.io/badge/license-MIT-6B7280)
 
+<h2 align="center">Download</h2>
+
 <p align="center">
-  No need for React Native, Flutter, Java/Kotlin, Tauri, Capacitor, PWA, or TWA for most of the app — just clone this repo and put your web app in the <code>app/</code> directory, or ask your agent to build one for you (There are ready-made slash commands for OpenCode). The APK builds on GitHub Actions, and you can preview the app in your browser since it's a web app that renders in the WebView. Everything else is already set up for you.
+  <a href="https://github.com/the-softcraft/Sketchpad/releases/download/v1.0.0/Sketchpad.apk">
+    <img src="https://img.shields.io/badge/Download-Latest%20APK-2563eb?style=for-the-badge&logo=android&logoColor=white" alt="Download APK" />
+  </a>
 </p>
 
 <p align="center">
-  Think of it as a mini <code>Ionic + Capacitor</code>
+  <em>Requires Android 6+ (API 23)</em>
 </p>
 
 </div>
 
----
+## What it does
 
-> [!NOTE]
-> 🚨 **APK tested on Android 12** — verified and working on Android 12 devices. Make sure **Play Protect is turned off** on the device before installing the APK.
+Sketchpad gives you a blank, infinite, zoomable canvas and lets you draw on it with your finger. Pen, eraser, undo/redo, light & dark theme, and PNG export — all offline.
 
-> [!TIP]
-> 🤖 **Ask the agent to build an app** — Run the slash commands in the correct order (see below), or simply ask like: `Build a todolist app with localstorage in /app dir`
+## Screenshots
+
+<!-- Add screenshots here -->
+
+<p align="left">
+  <img src="screenshots/one.png" height="256" />
+  <img src="screenshots/two.png" height="256" />
+  <img src="screenshots/three.png" height="256" />
+  <img src="screenshots/four.png" height="256" />
+</p>
 
 ## Features
 
-- **Zero dependencies** — pure Java, no AndroidX, no Kotlin, no Gradle plugins beyond AGP
-- **Cloud build** — push to GitHub, get an APK from Actions; nothing to install locally
-- **Android 6+** (API 23) through Android 15 (API 35)
-- **Offline-first** — `localStorage`, DOM storage and relative asset paths all work
-- **Real `https` origin** — your page runs as a secure context (mic, camera, geolocation, clipboard work like a real site)
-- **Native bridge** — camera, mic, geolocation, file picker, share, clipboard, notifications, native storage, async callbacks
-- **Branded splash** — full-screen dot grid, theme-aware (light/dark), app icon as the mark
-- **Custom toast view** — app icon shows on ROMs that draw the stock robot
-- **Downloads** — routed through `DownloadManager` with runtime permission handling
+- Pen, eraser, pan & zoom on an infinite canvas
+- Undo / redo history
+- Light & dark theme
+- PNG export of your drawing
+- Offline-first — works without internet
+- Lightweight, no ads
 
-## 🎉 What I built with this template
-
-A few apps shipped with this template as the base — each one is just an `app/` folder plus the native bridge:
-
-|                                   | App                                                            | What it does                                                      |
-| --------------------------------- | -------------------------------------------------------------- | ----------------------------------------------------------------- |
-| <img src="icon.png" width="50" /> | [Standby Clock](https://github.com/the-softcraft/ambient-time) | Always-on bedside clock with brightness control and ambient mode  |
-| <img src="icon.png" width="50" /> | [Pomodoro Timer](https://github.com/the-softcraft/pomodoro)    | Focus timer with native notifications and vibration cues          |
-| <img src="icon.png" width="50" /> | [YT Summarizer](https://github.com/the-softcraft/vidsum)       | Paste a YouTube link, get an AI summary — offline-friendly UI     |
-| <img src="icon.png" width="50" /> | [Paint App](https://github.com/the-softcraft/sketchpad)        | Finger-painting canvas with save-to-gallery via the native bridge |
-
-## How it works (core idea)
-
-A tiny native shell opens a full-screen `WebView` and loads
-
-```
-https://appassets.androidplatform.net/assets/index.html
-```
-
-That URL isn't on the internet — `shouldInterceptRequest` streams the file straight from the APK's `assets/` folder. So your page runs on a **real `https` origin** (secure context: mic, camera, geolocation, clipboard, `localStorage`), while everything stays offline and local. Same trick as AndroidX's `WebViewAssetLoader`, done by hand to keep the **zero-dependency** promise.
-
-## 📁 Project structure
-
-```
-app/            ← YOUR APP LIVES HERE (index.html entry point)
-src/.../MainActivity.java   ← WebView shell, asset intercept + native bridge
-res/               ← icon, layout, strings
-AndroidManifest.xml          ← permissions, launcher activity
-.github/workflows/ ← cloud APK build
-```
-
-## 🌉 Native bridge (like Capacitor, but built-in)
-
-The shell injects a `Native` object into JS — camera, mic, geolocation, file picker, share, clipboard, notifications, native storage, async callbacks. **No npm package, no dependency** — it's part of the template. (See `AGENTS.md` for the full API.)
-
-## 📱 Get an APK (easiest — cloud build)
+## Get an APK (`for devs`)
 
 1. Fork / clone this repo.
-2. Put your app in `app/` — keep `app/index.html` as the entry point. Plain HTML/CSS/JS works as-is; a built **Vite + React** app also works.
-3. Push to GitHub → the **Build APK** workflow runs automatically.
-4. Go to **Actions** → latest run → download the **Silicon** artifact.
-5. Copy the APK to your phone and install.
+2. Push to GitHub → the **Build APK** workflow runs automatically.
+3. Go to **Actions** → latest run → download the **Sketchpad** artifact.
+4. Install the APK on your Android device.
 
-### ✅ What you can put in `app/`
+> Make sure **Play Protect is turned off** before installing.
 
-| Your app                         | What to do                                                                                                                                    |
-| -------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
-| Plain HTML / CSS / JS            | Drop the files in `app/`. Entry point must be `app/index.html`.                                                                               |
-| Vite + React (or any bundler)    | `npm run build`, then copy the **contents of `dist/`** into `app/`. Set `base: './'` in `vite.config.js` so `assets/...` paths stay relative. |
-| React Router                     | Use `HashRouter`, **never** `BrowserRouter`.                                                                                                  |
-| Vanilla JS routing (hand-rolled) | Use hash-based routing (`#/page`) for the same reason.                                                                                        |
+## 🛠️ Built with
 
-**Why `HashRouter`?** There's no server behind the APK, so `BrowserRouter`'s real paths 404 on reload/deep-link. `HashRouter` keeps the route after `#`, so `index.html` always loads.
+- Plain HTML, CSS, JS (no framework)
+- Cloud build via GitHub Actions — no local Android SDK needed
+- Local icons/assets
 
-No computer setup needed beyond `git push 🎉`.
+## Origin
 
-### 🚀 To create a new app follow this checklist
+This app is built on top of the **WebView APK Template**:
 
-_the following instruction for human, not for ai_
+> Base template: https://github.com/fazle-rabbi-dev/Web-View-Apk-Template
 
-- [ ] **Clone this repo to your machine**
-- [ ] `/start-new-app command`: this will suggest app names and create a new `feat/app-name` branch
-- [ ] `/update-context command`: this will update the app name and app purpose in the Readme and Agentsmd top area so agents knows about this app
-- [ ] `/build-web-app`: this will help to create web app in `/app` dir
-- [ ] `/build-apk`: this will modify app name, icons, pkg name etc metadata
-- [ ] Get svg app icon from chatgpt or this agent - Turn the svg into xml for adaptive icon from this site: https://inloop.github.io/svg2android/
-- [ ] When agent ask give `svg icon`, `xml` icon
-- [ ] `/download-apk`: this will download latest artifact from github action (**apk file**) and place at `C:\Users\Hp\Downloads\MEmu Download\`
-- [ ] if u want to update status bar, run this command: `/update-status-bar` and follow up
+The template turns any **HTML/CSS/JS** site into an installable Android app with zero dependencies.
 
-## 🛠️ Build locally (optional) `Not recommended`
+## Contributing
 
-- **Legacy:** open the project in APK Builder / AIDE on-device via the `.project` file. Unmaintained on Android 12+; cloud build recommended.
+Issues and pull requests are welcome.
 
-## 📖 Origin story
+## Support
 
-<details>
-<summary><b>How this template came to be (click to expand)</b></summary>
-
-<br>
-
-Back in **2020**, I used an Android app called **APK Builder**. It shipped a handful of templates (flashlight, WebView, and a few others) — you picked one and it built an APK for you. I picked the **WebView** template, which by default just loaded `google.com`.
-
-Then I watched a YouTube video about WebView APKs and spotted the magic link: `file:///android_asset/...`. The idea clicked — what if I replaced `google.com` with that link and dropped my own website into the `assets/` folder?
-
-I tried it. **It worked.** I was so excited I could barely sit still.
-
-In **2022** I took that same template, cleaned it up, modified a few things, and pushed it to GitHub as my base template.
-
-Four years later, with the power of an **AI coding agent**, I've finally modernized it: Android 6+ support, a native bridge (camera, mic, geolocation, share, storage, async callbacks), a branded splash, a proper app icon, and a cloud build via GitHub Actions. The last upgrade was dropping `file:///android_asset/` in favour of a real `https://appassets.androidplatform.net` origin, intercepted and served from `assets/` — so the page finally behaves like a real site. What used to take weeks of trial and error now ships in days.
-
-Thanks to AI for making it possible. 🙌
-
-</details>
-
-## 🤝 Contributing
-
-> Technical details for agents/contributors live in [`AGENTS.md`](./AGENTS.md).
-
-Issues and pull requests are welcome. If you'd like to improve this template, open an issue or a PR.
-
-## ⭐ Support
-
-If this template helped you, consider giving it a star — it keeps the project alive.
+If this app helped you, consider giving it a star.
 
 <p align="center">
-  <sub>Built with ❤️ for the web-devs-who-want-an-APK crowd.</sub>
+  <sub>Built with ❤️ by <a href="https://fazle-rabbi-dev.vercel.app/">Fazle Rabbi</a></sub>
 </p>
