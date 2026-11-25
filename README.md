@@ -41,10 +41,8 @@ Sketchpad gives you a blank, infinite, zoomable canvas and lets you draw on it w
 <!-- Add screenshots here -->
 
 <p align="left">
-  <img src="screenshots/one.png" height="256" />
-  <img src="screenshots/two.png" height="256" />
-  <img src="screenshots/three.png" height="256" />
-  <img src="screenshots/four.png" height="256" />
+  <img src="screenshots/white.png" height="256" />
+  <img src="screenshots/dark.png" height="256" />
 </p>
 
 ## Features
