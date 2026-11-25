@@ -9,7 +9,7 @@
     <color name="system_bar_bg">#FFF7F9F7</color>
 
     <!-- Splash: LIGHT theme (default). Night values live in values-night. -->
-    <color name="splash_bg">#F7F9F7</color>
+    <color name="splash_bg">#f4f5f7</color>
     <color name="splash_text">#0A0F0C</color>
     <color name="splash_dot">#DDE4DE</color>
     <color name="splash_progress">#38BDF8</color>
