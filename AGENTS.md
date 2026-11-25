@@ -1,4 +1,6 @@
-# AGENTS.md — WebView APK Template
+# AGENTS.md — Sketchpad
+
+A minimal drawing app: the user gets a blank canvas and draws on it with a finger. No accounts, no menus beyond the drawing tools — just the canvas.
 
 > **Strict Rule:** without my permission dont push
 
